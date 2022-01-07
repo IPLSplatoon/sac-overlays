@@ -4,7 +4,7 @@ export function textOpacitySwap(
     newText: string,
     elem: HTMLElement,
     extraElems: HTMLElement[] = [],
-    callback?: gsap.Callback
+    callbacks?: { afterHide?: gsap.Callback, afterReveal?: gsap.Callback }
 ): gsap.core.Tween[] {
     return [
         gsap.to([elem, ...extraElems], {
@@ -14,9 +14,13 @@ export function textOpacitySwap(
                 } else {
                     elem.innerText = newText;
                 }
+
+                if (callbacks?.afterHide) {
+                    callbacks.afterHide();
+                }
             }
         }),
-        gsap.to([elem, ...extraElems], { opacity: 1, duration: 0.35, delay: 0.35, onComplete: callback })
+        gsap.to([elem, ...extraElems], { opacity: 1, duration: 0.35, delay: 0.35, onComplete: callbacks?.afterReveal })
     ];
 }
 

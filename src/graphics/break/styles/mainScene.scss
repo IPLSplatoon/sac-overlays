@@ -1,0 +1,66 @@
+@import '../../styles/constants';
+
+.main-scene-wrapper {
+    .main-scene-content {
+        position: relative;
+        transform: rotate(-2deg);
+
+        .accent-line {
+            height: 110%;
+            position: absolute;
+            left: 200px;
+
+            .line {
+                width: 25px;
+                height: 100%;
+                background-color: $sac-accent;
+            }
+
+            .circle {
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                background-color: $sac-background-1;
+                top: 628px;
+                border-radius: 50%;
+                border: 15px solid $sac-accent;
+            }
+        }
+
+        .text-wrapper {
+            position: absolute;
+            left: 275px;
+
+            .logo {
+                height: 360px;
+                margin-bottom: 20px;
+            }
+
+            .text {
+                height: 370px;
+
+                .flavor-text {
+                    font-size: 72px;
+                    font-weight: 600;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+
+    .main-info-row {
+        height: 70px;
+
+        .icon {
+            font-size: 48px;
+            margin-right: 20px;
+            width: 48px;
+            text-align: right;
+        }
+
+        fitted-text {
+            font-size: 45px;
+            font-weight: 300;
+        }
+    }
+}

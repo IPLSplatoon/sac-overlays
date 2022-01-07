@@ -1,5 +1,8 @@
 @import '../../styles/layout';
 @import '../../styles/fonts';
+@import '../../styles/constants';
+
+@import './mainScene.scss';
 
 body {
     margin: 0;
@@ -11,16 +14,14 @@ body {
 }
 
 .scene-content-wrapper {
-    width: 1920px * 3;
+    width: 1920px;
     height: 1080px;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
     position: absolute;
     top: 0; left: 0;
 
     will-change: transform;
+    contain: strict;
 }
 
 .content-wrapper {
@@ -28,12 +29,15 @@ body {
     height: 1080px;
     position: absolute;
     top: 0; left: 0;
-
-    contain: strict;
 }
 
 .scene-wrapper {
     width: 100%;
     height: 100%;
     position: relative;
+}
+
+.content-background {
+    background-color: $sac-background-1;
+    z-index: -1;
 }
