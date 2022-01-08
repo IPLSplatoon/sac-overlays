@@ -36,7 +36,11 @@ function setPlayers(players: Array<{ name: string }>, team: 'a' | 'b'): void {
             opacity: 0,
             duration: OPACITY_ANIMATION_DURATION,
             onComplete: () => {
-                playersElem.innerHTML = players.reduce((existing, player) => {
+                playersElem.innerHTML = players.reduce((existing, player, index) => {
+                    if (index >= 6) {
+                        return existing;
+                    }
+
                     existing += `<fitted-text text="${addDots(player.name)}" max-width="530" align="${align}"></fitted-text>`;
                     return existing;
                 }, '');
