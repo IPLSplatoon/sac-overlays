@@ -8,14 +8,20 @@ activeBreakScene.on('change', (newValue, oldValue) => {
 
     switch (oldValue) {
         case 'main':
-            sceneSwitchTl.add(hideMainScene());
+            sceneSwitchTl.add(hideMainScene(), 'sceneHide');
     }
 
-    sceneSwitchTl.addLabel('sceneShow');
+    if (newValue === 'main') {
+        sceneSwitchTl.add(hideInfoBar(), 'sceneHide');
+        sceneSwitchTl.addLabel('sceneShow');
+    } else {
+        sceneSwitchTl.addLabel('sceneShow');
+        sceneSwitchTl.add(showInfoBar(), 'sceneShow');
+    }
 
     switch (newValue) {
         case 'main':
-            sceneSwitchTl.add(showMainScene());
+            sceneSwitchTl.add(showMainScene(), 'sceneShow');
     }
 });
 
@@ -75,6 +81,48 @@ function showMainScene(): gsap.core.Timeline {
             ease: 'power2.out',
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
         }, 'sceneShow');
+
+    return tl;
+}
+
+function showInfoBar(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onStart: () => {
+            gsap.set('info-bar', { display: 'block' });
+        },
+        defaults: {
+            force3D: false
+        }
+    });
+
+    tl
+        .to('.info-bar', {
+            duration: 0.5,
+            opacity: 1,
+            y: 0,
+            ease: 'power2.out'
+        });
+
+    return tl;
+}
+
+function hideInfoBar(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onComplete: () => {
+            gsap.set('info-bar', { display: 'none' });
+        },
+        defaults: {
+            force3D: false
+        }
+    });
+
+    tl
+        .to('.info-bar', {
+            duration: 0.5,
+            opacity: 0,
+            y: 50,
+            ease: 'power2.in'
+        });
 
     return tl;
 }
