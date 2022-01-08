@@ -47,7 +47,7 @@
         "@fortawesome/free-brands-svg-icons": "^5.15.4",
         "@fortawesome/free-regular-svg-icons": "^5.15.4",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
-        "fitted-text": "^2.0.0",
+        "fitted-text": "^2.0.4",
         "gsap": "npm:@gsap/shockingly@^3.8.0",
         "lodash": "^4.17.21",
         "luxon": "^2.0.1"
