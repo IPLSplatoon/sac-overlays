@@ -1,6 +1,12 @@
 @import '../../styles/constants';
 
+.main-scene-wrapper .text-wrapper > .logo, .main-scene-wrapper .text-wrapper .text > * {
+    opacity: 0;
+}
+
 .main-scene-wrapper {
+    display: none;
+
     .main-scene-content {
         position: relative;
         transform: rotate(-2deg);
@@ -8,7 +14,9 @@
         .accent-line {
             height: 110%;
             position: absolute;
-            left: 200px;
+            left: 185px;
+            padding: 0 25px;
+            clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
 
             .line {
                 width: 25px;

@@ -3,6 +3,7 @@ import './styles/break.scss';
 import './scripts/music';
 import './scripts/mainScene';
 import './scripts/nextStageTimer';
+import './scripts/sceneSwitcher';
 
 import 'fitted-text/dist/fitted-text';
 
