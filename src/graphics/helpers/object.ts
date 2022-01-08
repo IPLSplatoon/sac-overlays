@@ -46,3 +46,7 @@ export function doOnNoDifference<T>(
         callback(newObject);
     }
 }
+
+export function getPrevious<T>(array: Array<T>, index: number): T {
+    return array[index - 1 === -1 ? array.length - 1 : index - 1];
+}

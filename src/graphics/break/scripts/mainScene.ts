@@ -2,6 +2,7 @@ import gsap from 'gsap';
 import { mainFlavorText } from '../../helpers/replicants';
 import { textOpacitySwap } from '../../helpers/anim';
 import { elementById } from '../../helpers/elem';
+import { getPrevious } from '../../helpers/object';
 
 export function toggleMainRow(isVisible: boolean, rowClass: string): void {
     const selector = `.${rowClass}`;
@@ -46,7 +47,7 @@ const socialIconElem = elementById('main-scene-socials-icon-wrapper');
 
 for (let i = 0; i < socialInfo.length; i++) {
     const element = socialInfo[i];
-    const previousElement = socialInfo[i - 1 === -1 ? socialInfo.length - 1 : i - 1];
+    const previousElement = getPrevious(socialInfo, i);
 
     socialLoopTl
         .add(textOpacitySwap(
