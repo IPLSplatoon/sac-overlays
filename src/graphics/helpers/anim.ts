@@ -1,5 +1,7 @@
 import { gsap } from 'gsap';
 
+export const OPACITY_ANIMATION_DURATION = 0.35;
+
 export function textOpacitySwap(
     newText: string,
     elem: HTMLElement,
@@ -8,7 +10,7 @@ export function textOpacitySwap(
 ): gsap.core.Tween[] {
     return [
         gsap.to([elem, ...extraElems], {
-            opacity: 0, duration: 0.35, onComplete: () => {
+            opacity: 0, duration: OPACITY_ANIMATION_DURATION, onComplete: () => {
                 if (elem.tagName === 'FITTED-TEXT') {
                     (elem as FittedText).text = newText;
                 } else {
@@ -20,7 +22,13 @@ export function textOpacitySwap(
                 }
             }
         }),
-        gsap.to([elem, ...extraElems], { opacity: 1, duration: 0.35, delay: 0.35, onComplete: callbacks?.afterReveal })
+        gsap.to([elem, ...extraElems], {
+            opacity: 1,
+            duration:
+            OPACITY_ANIMATION_DURATION,
+            delay: OPACITY_ANIMATION_DURATION,
+            onComplete: callbacks?.afterReveal
+        })
     ];
 }
 

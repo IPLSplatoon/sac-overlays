@@ -1,7 +1,12 @@
 import { activeBreakScene } from '../../helpers/replicants';
 import gsap from 'gsap';
 
-const sceneSwitchTl = gsap.timeline();
+const sceneSwitchTl = gsap.timeline({
+    defaults: {
+        force3D: false,
+        immediateRender: false
+    }
+});
 
 activeBreakScene.on('change', (newValue, oldValue) => {
     sceneSwitchTl.addLabel('sceneHide');
@@ -9,6 +14,9 @@ activeBreakScene.on('change', (newValue, oldValue) => {
     switch (oldValue) {
         case 'main':
             sceneSwitchTl.add(hideMainScene(), 'sceneHide');
+            break;
+        case 'teams':
+            sceneSwitchTl.add(hideTeams(), 'sceneHide');
     }
 
     if (newValue === 'main') {
@@ -22,6 +30,9 @@ activeBreakScene.on('change', (newValue, oldValue) => {
     switch (newValue) {
         case 'main':
             sceneSwitchTl.add(showMainScene(), 'sceneShow');
+            break;
+        case 'teams':
+            sceneSwitchTl.add(showTeams(), 'sceneShow');
     }
 });
 
@@ -88,7 +99,7 @@ function showMainScene(): gsap.core.Timeline {
 function showInfoBar(): gsap.core.Timeline {
     const tl = gsap.timeline({
         onStart: () => {
-            gsap.set('info-bar', { display: 'block' });
+            gsap.set('.info-bar', { display: 'flex' });
         },
         defaults: {
             force3D: false
@@ -109,7 +120,7 @@ function showInfoBar(): gsap.core.Timeline {
 function hideInfoBar(): gsap.core.Timeline {
     const tl = gsap.timeline({
         onComplete: () => {
-            gsap.set('info-bar', { display: 'none' });
+            gsap.set('.info-bar', { display: 'none' });
         },
         defaults: {
             force3D: false
@@ -122,6 +133,48 @@ function hideInfoBar(): gsap.core.Timeline {
             opacity: 0,
             y: 50,
             ease: 'power2.in'
+        });
+
+    return tl;
+}
+
+function showTeams(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onStart: () => {
+            gsap.set('.teams-wrapper', { display: 'flex' });
+        },
+        delay: 0.1
+    });
+
+    tl
+        .fromTo('.teams-wrapper .team', {
+            y: -50
+        }, {
+            duration: 0.5,
+            opacity: 1,
+            y: 0,
+            ease: 'power2.out',
+            stagger: 0.1
+        });
+
+    return tl;
+}
+
+function hideTeams(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onComplete: () => {
+            gsap.set('.teams-wrapper', { display: 'none' });
+        },
+        delay: 0.1
+    });
+
+    tl
+        .to('.teams-wrapper .team', {
+            duration: 0.5,
+            opacity: 0,
+            y: 50,
+            ease: 'power2.in',
+            stagger: 0.1
         });
 
     return tl;

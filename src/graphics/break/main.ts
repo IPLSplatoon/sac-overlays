@@ -6,6 +6,7 @@ import './scripts/nextStageTimer';
 import './scripts/sceneSwitcher';
 import './scripts/casters';
 import './scripts/infoBar';
+import './scripts/teams';
 
 import 'fitted-text/dist/fitted-text';
 

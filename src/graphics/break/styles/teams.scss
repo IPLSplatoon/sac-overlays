@@ -1,0 +1,49 @@
+@import '../../styles/constants';
+
+.teams-layout {
+    width: 1400px;
+    height: 580px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    gap: 200px;
+    margin-bottom: 100px;
+
+    .team {
+        background-color: $sac-background-2;
+        padding: 0 15px;
+
+        > .team-name {
+            font-weight: 600;
+            font-size: 64px;
+            margin: 15px 0 10px;
+            height: 95px;
+        }
+
+        > .separator {
+            width: 93%;
+            height: 6px;
+            background-color: $sac-accent;
+        }
+
+        > .team-players {
+            width: 93%;
+            margin-top: 12px;
+
+            > fitted-text {
+                font-weight: 300;
+                font-size: 52px;
+                line-height: 68px;
+                height: 68px;
+            }
+        }
+
+        &.team-a {
+            clip-path: polygon(100% 0, 100% 85%, 85% 100%, 0 100%, 0 0);
+        }
+
+        &.team-b {
+            clip-path: polygon(100% 0, 100% 100%, 15% 100%, 0 85%, 0 0);
+        }
+    }
+}
