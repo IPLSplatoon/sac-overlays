@@ -5,6 +5,7 @@
 @import './mainScene.scss';
 @import './infoBar.scss';
 @import './teams.scss';
+@import './stages.scss';
 
 body {
     margin: 0;
@@ -31,12 +32,6 @@ body {
     height: 1080px;
     position: absolute;
     top: 0; left: 0;
-}
-
-.scene-wrapper {
-    width: 100%;
-    height: 100%;
-    position: relative;
 }
 
 .content-background {

@@ -7,6 +7,7 @@ import './scripts/sceneSwitcher';
 import './scripts/casters';
 import './scripts/infoBar';
 import './scripts/teams';
+import './scripts/stages';
 
 import 'fitted-text/dist/fitted-text';
 

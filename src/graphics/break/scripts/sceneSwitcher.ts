@@ -1,7 +1,7 @@
 import { activeBreakScene } from '../../helpers/replicants';
 import gsap from 'gsap';
 
-const sceneSwitchTl = gsap.timeline({
+export const sceneSwitchTl = gsap.timeline({
     defaults: {
         force3D: false,
         immediateRender: false
@@ -17,6 +17,9 @@ activeBreakScene.on('change', (newValue, oldValue) => {
             break;
         case 'teams':
             sceneSwitchTl.add(hideTeams(), 'sceneHide');
+            break;
+        case 'stages':
+            sceneSwitchTl.add(hideStages(), 'sceneHide');
     }
 
     if (newValue === 'main') {
@@ -33,6 +36,9 @@ activeBreakScene.on('change', (newValue, oldValue) => {
             break;
         case 'teams':
             sceneSwitchTl.add(showTeams(), 'sceneShow');
+            break;
+        case 'stages':
+            sceneSwitchTl.add(showStages(), 'sceneShow');
     }
 });
 
@@ -66,7 +72,7 @@ function hideMainScene(): gsap.core.Timeline {
 function showMainScene(): gsap.core.Timeline {
     const tl = gsap.timeline({
         onStart: () => {
-            gsap.set('.main-scene-wrapper', { display: 'block' });
+            gsap.set('.main-scene-wrapper', { display: 'flex' });
         },
         defaults: {
             force3D: false
@@ -170,6 +176,47 @@ function hideTeams(): gsap.core.Timeline {
 
     tl
         .to('.teams-wrapper .team', {
+            duration: 0.5,
+            opacity: 0,
+            y: 50,
+            ease: 'power2.in',
+            stagger: 0.1
+        });
+
+    return tl;
+}
+
+function showStages(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onStart: () => {
+            gsap.set('.stages-wrapper', { display: 'flex' });
+        }
+    });
+
+    tl
+        .fromTo('#stages-layout > .stage', {
+            y: -50,
+            opacity: 0
+        }, {
+            duration: 0.5,
+            opacity: 1,
+            y: 0,
+            ease: 'power2.out',
+            stagger: 0.1
+        });
+
+    return tl;
+}
+
+function hideStages(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onComplete: () => {
+            gsap.set('.stages-wrapper', { display: 'none' });
+        }
+    });
+
+    tl
+        .to('#stages-layout > .stage', {
             duration: 0.5,
             opacity: 0,
             y: 50,

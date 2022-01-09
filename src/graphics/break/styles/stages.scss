@@ -1,0 +1,92 @@
+@import '../../styles/constants';
+
+.stages-wrapper {
+    display: none;
+}
+
+.stages-layout {
+    display: grid;
+    height: 650px;
+    margin-bottom: 100px;
+
+    &.stage-count-3 {
+        width: 1300px;
+        gap: 50px;
+        grid-template-columns: repeat(3, 1fr);
+
+        > .stage {
+            clip-path: polygon(0 0, 100% 0, 100% 620px, 370px 100%, 0 100%);
+        }
+    }
+
+    &.stage-count-5 {
+        width: 1550px;
+        gap: 40px;
+        grid-template-columns: repeat(5, 1fr);
+
+        > .stage {
+            clip-path: polygon(0 0, 100% 0, 100% 620px, 248px 100%, 0 100%);
+        }
+    }
+
+    &.stage-count-7 {
+        width: 1750px;
+        gap: 15px;
+        grid-template-columns: repeat(7, 1fr);
+
+        > .stage {
+            clip-path: polygon(0 0, 100% 0, 100% 630px, 216px 100%, 0 100%);
+
+            > .stage-name {
+                font-size: 34px;
+                line-height: 39px;
+            }
+        }
+    }
+
+    > .stage {
+        background-color: $sac-background-2;
+        text-align: center;
+        position: relative;
+
+        > .stage-image {
+            height: 75%;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        > .stage-winner {
+            height: 75%;
+            width: calc(100% - 20px);
+            padding: 0 10px;
+            position: absolute;
+            background: linear-gradient(180deg, rgba(0, 51, 102, 1) 0%, rgba(0, 51, 102, 0.75) 30%, rgba(0, 51, 102, 0) 60%);
+            text-align: right;
+            font-size: 36px;
+            line-height: 42px;
+
+            > .stage-winner-text {
+                margin-top: 5px;
+            }
+        }
+
+        > .stage-mode {
+            font-weight: 300;
+            font-size: 32px;
+            height: 45px;
+        }
+
+        > .stage-name {
+            flex-grow: 1;
+            background-color: $sac-background-3;
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 45px;
+            padding: 0 10px;
+
+            > div {
+                margin-bottom: 2px;
+            }
+        }
+    }
+}
