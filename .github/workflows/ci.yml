@@ -27,7 +27,7 @@ jobs:
           token: ${{ secrets['GITHUB_TOKEN'] }}
           ref: ${{ github.ref }}
           fetch-depth: 0
-          path: ./nodecg/bundles/sqss-overlays
+          path: ./nodecg/bundles/sac-overlays
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -46,13 +46,13 @@ jobs:
         run: npm install -g npm@7.19.1
 
       - name: Install NPM dependencies
-        working-directory: ./nodecg/bundles/sqss-overlays
+        working-directory: ./nodecg/bundles/sac-overlays
         run: npm ci
         env:
           GSAP_AUTH: ${{ secrets.GSAP_AUTH }}
 
       - name: Run ESLint on source
-        working-directory: ./nodecg/bundles/sqss-overlays
+        working-directory: ./nodecg/bundles/sac-overlays
         run: npm run lint
 
       - name: Set up GitHub for SSH access
@@ -63,7 +63,7 @@ jobs:
 
       - name: Set git config
         if: github.ref == 'refs/heads/master'
-        working-directory: ./nodecg/bundles/sqss-overlays
+        working-directory: ./nodecg/bundles/sac-overlays
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -71,7 +71,7 @@ jobs:
       - name: Merge master branch into build branch
         if: github.ref == 'refs/heads/master'
         continue-on-error: true
-        working-directory: ./nodecg/bundles/sqss-overlays
+        working-directory: ./nodecg/bundles/sac-overlays
         run: |
           git checkout master
           git checkout build
@@ -79,7 +79,7 @@ jobs:
 
       - name: Build
         if: github.ref == 'refs/heads/master'
-        working-directory: ./nodecg/bundles/sqss-overlays
+        working-directory: ./nodecg/bundles/sac-overlays
         run: |
           npm run clean
           npm run build
@@ -88,7 +88,7 @@ jobs:
         if: github.ref == 'refs/heads/master'
         id: commit
         continue-on-error: true
-        working-directory: ./nodecg/bundles/sqss-overlays
+        working-directory: ./nodecg/bundles/sac-overlays
         run: |
           git add -f graphics
           git commit -m "Build result from master branch" -a
@@ -99,4 +99,4 @@ jobs:
         with:
           github_token: ${{ secrets['GITHUB_TOKEN'] }}
           branch: build
-          directory: ./nodecg/bundles/sqss-overlays
+          directory: ./nodecg/bundles/sac-overlays
