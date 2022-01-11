@@ -27,6 +27,6 @@ nodecg.listenFor('mainShowCasters', DASHBOARD_BUNDLE_NAME, () => {
 
     tl
         .to('.casters-content', { y: 0, duration: 0.5, ease: 'power2.out' })
-        .to({}, { duration: 3 })
+        .to({}, { duration: 15 })
         .to('.casters-content', { y: 356, duration: 0.5, ease: 'power2.in' });
 });
