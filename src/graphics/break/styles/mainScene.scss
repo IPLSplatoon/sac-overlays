@@ -38,6 +38,7 @@
         .text-wrapper {
             position: absolute;
             left: 275px;
+            filter: $global-drop-shadow;
 
             .logo {
                 height: 360px;

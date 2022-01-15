@@ -12,6 +12,7 @@
     grid-template-rows: 1fr;
     gap: 200px;
     margin-bottom: 100px;
+    filter: $global-drop-shadow;
 
     .team {
         background-color: $sac-background-2;

@@ -8,6 +8,7 @@
     display: grid;
     height: 650px;
     margin-bottom: 100px;
+    filter: $global-drop-shadow;
 
     &.stage-count-3 {
         width: 1300px;

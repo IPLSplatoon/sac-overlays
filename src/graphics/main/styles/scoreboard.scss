@@ -32,6 +32,7 @@
 .scoreboard-wrapper {
     height: 140px;
     overflow: hidden;
+    filter: $global-drop-shadow;
 }
 
 .scoreboard-content {
