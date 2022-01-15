@@ -49,6 +49,7 @@
         background-color: $sac-background-2;
         text-align: center;
         position: relative;
+        will-change: transform, opacity;
 
         > .stage-image {
             height: 75%;
