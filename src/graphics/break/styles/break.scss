@@ -35,6 +35,7 @@ body {
 }
 
 .content-background {
-    background-color: $sac-background-1;
+    background-image: url('/assets/background.png');
+    background-size: contain;
     z-index: -1;
 }
