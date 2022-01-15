@@ -13,6 +13,7 @@
         width: 85%;
         background-color: $sac-background-2;
         opacity: 0;
+        filter: $global-drop-shadow;
 
         .info-bar-logo {
             height: 100%;

@@ -8,6 +8,7 @@
     display: grid;
     height: 650px;
     margin-bottom: 100px;
+    filter: $global-drop-shadow;
 
     &.stage-count-3 {
         width: 1300px;
@@ -48,6 +49,7 @@
         background-color: $sac-background-2;
         text-align: center;
         position: relative;
+        will-change: transform, opacity;
 
         > .stage-image {
             height: 75%;
