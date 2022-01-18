@@ -48,18 +48,19 @@ scoreboardData.on('change', (newValue, oldValue) => {
 
         if (isVisible) {
             tl
+                .to('.scoreboard-extra', { opacity: 1, duration: 0.35 })
                 .fromTo('.scoreboard-extra', {
-                    clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
+                    width: '29.8%'
                 }, {
-                    clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+                    width: '100%',
                     duration: 0.5,
-                    ease: 'power2.out'
-                })
+                    ease: 'power2.inOut'
+                }, '-=0.25')
                 .to('.scoreboard-content', {
                     y: 0,
                     duration: 0.5,
                     ease: 'power2.out'
-                }, '-=0.1');
+                }, '+=0.1');
         } else {
             tl
                 .to('.scoreboard-content', {
@@ -68,10 +69,11 @@ scoreboardData.on('change', (newValue, oldValue) => {
                     ease: 'power2.in'
                 })
                 .to('.scoreboard-extra', {
-                    clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)',
+                    width: '29.8%',
                     duration: 0.5,
-                    ease: 'power2.in'
-                }, '-=0.1');
+                    ease: 'power2.inOut'
+                }, '+=0.1')
+                .to('.scoreboard-extra', { opacity: 0, duration: 0.35 });
         }
     });
 });
