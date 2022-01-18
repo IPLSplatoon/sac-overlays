@@ -6,25 +6,31 @@
     left: 50px;
     width: 370px;
 
-    > .scoreboard-extra {
-        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+    > .scoreboard-extra-container {
+        width: 100%;
 
-        .logo {
-            height: 38px;
-            background-color: $sac-accent;
-            padding: 0 6px;
-            margin: 0;
+        > .scoreboard-extra {
+            width: 29.8%;
+            opacity: 0;
+            align-self: flex-end;
 
-            > img {
-                height: 30px;
+            .logo {
+                height: 38px;
+                background-color: $sac-accent;
+                padding: 0 6px;
                 margin: 0;
-                transform: translate(-1px, -5px);
-            }
-        }
 
-        > .separator {
-            height: 8px;
-            background-color: $sac-accent;
+                > img {
+                    height: 30px;
+                    margin: 0;
+                    transform: translate(-1px, -5px);
+                }
+            }
+
+            > .separator {
+                height: 8px;
+                background-color: $sac-accent;
+            }
         }
     }
 }
@@ -55,8 +61,7 @@
             height: 35px;
             border-radius: 5px;
             background-color: white;
-            filter: drop-shadow(0 0 2px white);
-            border: 1px solid white;
+            border: 2px solid white;
         }
 
         > fitted-text {
