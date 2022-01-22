@@ -8,13 +8,13 @@ Broadcast overlays for the Splatoon Advanced Circuit, a Splatoon tournament from
 
 ### Pre-built version (For production use)
 
-- Clone the `build` branch of this repository to `[nodecg]/bundles/sqss-overlays`
+- Clone the `build` branch of this repository to `[nodecg]/bundles/sac-overlays`
 - All done!
 
 ### Build manually
 
 - Ensure you have access to the private GSAP registry: [Guide](https://greensock.com/docs/v3/Installation#private)
-- Clone this repository to `[nodecg]/bundles/sqss-overlays`
+- Clone this repository to `[nodecg]/bundles/sac-overlays`
 - Install dependencies: `npm i`
 - Run build: `npm run build`
 
