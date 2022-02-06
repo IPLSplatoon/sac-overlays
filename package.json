@@ -1,7 +1,7 @@
 {
     "name": "sac-overlays",
     "version": "0.0.0",
-    "compatibleDashboardVersion": "^3.1.0",
+    "compatibleDashboardVersion": "^4.0.0",
     "description": "Broadcast overlays for the Splatoon Advanced Circuit, a Splatoon tournament from Inkling Performance Labs and SAC staff.",
     "author": {
         "name": "inkfarer",
