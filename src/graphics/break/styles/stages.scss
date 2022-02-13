@@ -73,6 +73,7 @@
                 -webkit-box-decoration-break: clone;
                 box-shadow: 10px 0 0 $sac-accent, -10px 0 0 $sac-accent;
                 background-color: $sac-accent;
+                overflow-wrap: break-word;
             }
         }
 

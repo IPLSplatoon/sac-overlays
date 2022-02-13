@@ -21,7 +21,7 @@ activeRound.on('change', (newValue, oldValue) => {
 
     updateGames(games, winners);
 
-    if (!games.isNewRound) {
+    if (!games.isNewMatch) {
         setWinners(winners);
     }
 });
@@ -31,8 +31,10 @@ function getStageUrl(stageName: string): string {
 }
 
 async function updateGames(games: UpdatedGames, winners: Array<UpdatedWinner>): Promise<void> {
+    if (games.changedGames.length <= 0) return;
+
     const stageElementIds = games.changedGames.map(game => `#stage_${game.index}`).join(', ');
-    const target = games.isNewRound ? '#stages-layout > .stage' : stageElementIds;
+    const target = games.isNewMatch ? '#stages-layout > .stage' : stageElementIds;
     const tl = gsap.timeline({
         defaults: {
             force3D: false,
@@ -41,7 +43,7 @@ async function updateGames(games: UpdatedGames, winners: Array<UpdatedWinner>): 
     });
 
     function createStageElems() {
-        if (games.isNewRound) {
+        if (games.isNewMatch) {
             const modeTextMaxWidth = { '3': 380, '5': 258, '7': 217 }[games.changedGames.length];
             stagesLayout.classList.remove('stage-count-3', 'stage-count-5', 'stage-count-7');
             stagesLayout.classList.add(`stage-count-${games.changedGames.length}`);
