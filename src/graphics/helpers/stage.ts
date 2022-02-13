@@ -2,7 +2,7 @@ import { ActiveRound } from 'schemas';
 import { addDots } from './string';
 
 export type ChangedGame = { index: number, stage: string, mode: string };
-export type UpdatedGames = { isNewRound: boolean, isFirstLoad: boolean, changedGames: Array<ChangedGame> };
+export type UpdatedGames = { isNewMatch: boolean, isFirstLoad: boolean, changedGames: Array<ChangedGame> };
 
 export function getUpdatedGames(newValue: ActiveRound, oldValue: ActiveRound): UpdatedGames {
     const gamesWithIndex = newValue.games.map((game, index) => ({
@@ -10,16 +10,16 @@ export function getUpdatedGames(newValue: ActiveRound, oldValue: ActiveRound): U
         ...game
     }));
 
-    if (!oldValue || newValue.round.id !== oldValue.round.id) {
+    if (!oldValue || newValue.match.id !== oldValue.match.id) {
         return {
-            isNewRound: true,
+            isNewMatch: true,
             isFirstLoad: !oldValue,
             changedGames: gamesWithIndex
         };
     }
 
     return {
-        isNewRound: false,
+        isNewMatch: false,
         isFirstLoad: false,
         changedGames: gamesWithIndex.filter((game, index) => {
             const oldGame = oldValue.games[index];
@@ -38,7 +38,7 @@ export function getUpdatedWinners(newValue: ActiveRound, oldValue: ActiveRound):
         oldWinner: oldValue?.games[index]?.winner
     }));
 
-    if (!oldValue || newValue.round.id !== oldValue.round.id) {
+    if (!oldValue || newValue.match.id !== oldValue.match.id) {
         return winners;
     }
 
