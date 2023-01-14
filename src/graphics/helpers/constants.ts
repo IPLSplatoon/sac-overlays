@@ -27,6 +27,8 @@ export const mapNameToImagePath: Record<string, string> = {
     'Wahoo World': 'S2_Stage_Wahoo_World.png',
     'Walleye Warehouse': 'S2_Stage_Walleye_Warehouse.png',
     'Skipper Pavilion': 'S2_Stage_Skipper_Pavilion.png',
+    'Flounder Heights': 'S3_Stage_Flounder_Heights.png',
+    'Brinewater Springs': 'S3_Brinewater_Springs.png',
     'Unknown Stage': 'unknown-stage.png',
     Counterpick: 'unknown-stage.png'
 };
