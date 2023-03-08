@@ -12,7 +12,7 @@ export const mapNameToImagePath: Record<string, string> = {
     'Inkblot Art Academy': 'S3_Stage_Inkblot_Art_Academy.jpg',
     'Kelp Dome': 'S2_Stage_Kelp_Dome.png',
     MakoMart: 'S3_Stage_Mako_Mart.jpg',
-    'Manta Maria': 'S2_Stage_Manta_Maria.png',
+    'Manta Maria': 'S3_Stage_Manta_Maria.png',
     'Moray Towers': 'S2_Stage_Moray_Towers.png',
     'Musselforge Fitness': 'S2_Stage_Musselforge_Fitness.png',
     'New Albacore Hotel': 'S2_Stage_New_Albacore_Hotel.png',
@@ -37,6 +37,7 @@ export const mapNameToImagePath: Record<string, string> = {
     'Flounder Heights': 'S3_Stage_Flounder_Heights.png',
     'Brinewater Springs': 'S3_Brinewater_Springs.png',
     'Undertow Spillway':'S3_Stage_Undertow_Spillway.jpg',
+    'Um\'ami Ruins': 'S3_Stage_Umami_Ruins.png',
     'Unknown Stage': 'unknown-stage.png',
     Counterpick: 'unknown-stage.png'
 };
