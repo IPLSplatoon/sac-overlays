@@ -1,5 +1,4 @@
 import { DASHBOARD_BUNDLE_NAME } from './constants';
-import { NodeCGBrowser } from 'nodecg/browser';
 import { MusicShown, NowPlaying, Casters, ActiveRound, PredictionStore, ActiveBreakScene, MainFlavorText, NextRoundStartTime, ScoreboardData, NextRound } from 'schemas';
 
 export const musicShown = nodecg.Replicant<MusicShown>('musicShown', DASHBOARD_BUNDLE_NAME);

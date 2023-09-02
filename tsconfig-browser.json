@@ -11,7 +11,8 @@
         ],
         "types": [
             "webpack-env",
-            "jest"
+            "jest",
+            "@nodecg/types/augment-window"
         ],
         "esModuleInterop": true,
         "experimentalDecorators": true,
@@ -20,9 +21,6 @@
         "moduleResolution": "Node",
         "baseUrl": ".",
         "paths": {
-            "nodecg/*": [
-                "../../types/*"
-            ],
             "schemas": [
                 "../ipl-overlay-controls/src/types/schemas/index"
             ]
