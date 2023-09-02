@@ -1,4 +1,4 @@
-import { activeBreakScene, activeRound } from '../../helpers/replicants';
+import { activeBreakScene, activeRound, assetPaths } from '../../helpers/replicants';
 import {
     getUpdatedGames,
     getUpdatedWinners,
@@ -7,7 +7,6 @@ import {
     UpdatedWinner
 } from '../../helpers/stage';
 import gsap from 'gsap';
-import { mapNameToImagePath } from '../../helpers/constants';
 import { loadImage } from '../../helpers/image';
 import { elementById } from '../../helpers/elem';
 import { textOpacitySwap } from '../../helpers/anim';
@@ -15,19 +14,21 @@ import { sceneSwitchTl } from './sceneSwitcher';
 
 const stagesLayout = elementById('stages-layout');
 
-activeRound.on('change', (newValue, oldValue) => {
-    const games = getUpdatedGames(newValue, oldValue);
-    const winners = getUpdatedWinners(newValue, oldValue);
+NodeCG.waitForReplicants(activeRound, assetPaths).then(() => {
+    activeRound.on('change', (newValue, oldValue) => {
+        const games = getUpdatedGames(newValue, oldValue);
+        const winners = getUpdatedWinners(newValue, oldValue);
 
-    updateGames(games, winners);
+        updateGames(games, winners);
 
-    if (!games.isNewMatch) {
-        setWinners(winners);
-    }
+        if (!games.isNewMatch) {
+            setWinners(winners);
+        }
+    });
 });
 
 function getStageUrl(stageName: string): string {
-    return `assets/stages/${mapNameToImagePath[stageName]}`;
+    return assetPaths.value.stageImages[stageName] ?? 'assets/unknown-stage.png';
 }
 
 async function updateGames(games: UpdatedGames, winners: Array<UpdatedWinner>): Promise<void> {

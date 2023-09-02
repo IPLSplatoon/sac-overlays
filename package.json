@@ -1,7 +1,7 @@
 {
     "name": "sac-overlays",
     "version": "0.0.0",
-    "compatibleDashboardVersion": "^4.0.0",
+    "compatibleDashboardVersion": "^4.4.0",
     "compatibleGameVersions": [
         "SPLATOON_2",
         "SPLATOON_3"
