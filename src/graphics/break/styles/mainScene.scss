@@ -39,11 +39,11 @@
         .text-wrapper {
             position: absolute;
             left: 275px;
+            bottom: 155px;
             filter: $global-drop-shadow;
 
             .logo {
-                height: 360px;
-                margin-bottom: 20px;
+                height: 450px;
             }
 
             .text {
@@ -76,5 +76,12 @@
             font-size: 45px;
             font-weight: 300;
         }
+    }
+
+    .presented-by-sac {
+        position: absolute;
+        top: 40px;
+        right: 70px;
+        width: 320px;
     }
 }

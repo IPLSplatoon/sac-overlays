@@ -64,7 +64,13 @@ function hideMainScene(): gsap.core.Timeline {
             duration: 0.5,
             stagger: -0.1,
             opacity: 0
-        }, 'sceneHide');
+        }, 'sceneHide')
+        .to('.presented-by-sac', {
+            opacity: 0,
+            x: 50,
+            ease: 'power2.in',
+            duration: 0.5
+        }, 'sceneHide+=0.5');
 
     return tl;
 }
@@ -97,6 +103,15 @@ function showMainScene(): gsap.core.Timeline {
             duration: 0.75,
             ease: 'power2.out',
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
+        }, 'sceneShow')
+        .fromTo('.presented-by-sac', {
+            opacity: 0,
+            x: 50
+        }, {
+            duration: 0.5,
+            opacity: 1,
+            x: 0,
+            ease: 'power2.out'
         }, 'sceneShow');
 
     return tl;

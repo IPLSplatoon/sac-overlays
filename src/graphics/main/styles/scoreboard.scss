@@ -2,8 +2,8 @@
 
 .scoreboard-container {
     position: absolute;
-    top: 50px;
-    left: 50px;
+    top: 30px;
+    left: 30px;
     width: 370px;
 
     > .scoreboard-extra-container {
@@ -21,9 +21,9 @@
                 margin: 0;
 
                 > img {
-                    height: 30px;
+                    height: 40px;
                     margin: 0;
-                    transform: translate(-1px, -5px);
+                    transform: translate(0, -5px);
                 }
             }
 

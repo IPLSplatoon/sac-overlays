@@ -28,7 +28,7 @@ NodeCG.waitForReplicants(activeRound, assetPaths).then(() => {
 });
 
 function getStageUrl(stageName: string): string {
-    return assetPaths.value.stageImages[stageName] ?? 'assets/unknown-stage.png';
+    return assetPaths.value.stageImages[stageName] ?? 'assets/nw/unknown-stage.png';
 }
 
 async function updateGames(games: UpdatedGames, winners: Array<UpdatedWinner>): Promise<void> {
