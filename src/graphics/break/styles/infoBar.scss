@@ -15,9 +15,14 @@
         opacity: 0;
         filter: $global-drop-shadow;
 
+        .info-bar-separator {
+            width: 6px;
+            height: 80%;
+            background-color: $sac-accent;
+        }
+
         .info-bar-logo {
             height: 100%;
-            background-color: $sac-accent;
             padding: 0 15px;
 
             img {
@@ -39,7 +44,7 @@
                     height: 100%;
                     margin: 0 15px;
                     position: relative;
-                    font-size: 44px;
+                    font-size: 42px;
                     font-weight: 300;
                     line-height: 53px;
 
@@ -49,12 +54,6 @@
                         width: 56px;
                         text-align: center;
                     }
-                }
-
-                > .info-bar-separator {
-                    width: 6px;
-                    height: 80%;
-                    background-color: $sac-accent;
                 }
             }
         }
@@ -86,7 +85,7 @@
         justify-self: flex-end;
         text-align: center;
         width: 100%;
-        font-size: 56px;
+        font-size: 46px;
     }
 
     fitted-text {

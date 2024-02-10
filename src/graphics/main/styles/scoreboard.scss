@@ -17,13 +17,13 @@
             .logo {
                 height: 38px;
                 background-color: $sac-accent;
-                padding: 0 6px;
+                padding: 0 8px;
                 margin: 0;
 
                 > img {
-                    height: 40px;
+                    height: 36px;
                     margin: 0;
-                    transform: translate(0, -5px);
+                    transform: translate(0, -2px);
                 }
             }
 
@@ -66,13 +66,13 @@
 
         > fitted-text {
             justify-self: start;
-            font-size: 35px;
+            font-size: 32px;
             line-height: 30px;
         }
 
         > .team-score {
             font-weight: 700;
-            font-size: 45px;
+            font-size: 36px;
             line-height: 45px;
             text-align: center;
         }
@@ -81,7 +81,7 @@
     > .flavor-text-wrapper {
         height: 36px;
         background-color: $sac-background-3;
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 300;
 
         > fitted-text {

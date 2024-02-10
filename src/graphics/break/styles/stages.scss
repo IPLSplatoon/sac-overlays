@@ -59,7 +59,7 @@
             padding: 0 10px;
             position: absolute;
             text-align: right;
-            font-size: 36px;
+            font-size: 30px;
             line-height: 42px;
             transform: translate(5px, -5px);
             filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
@@ -74,21 +74,25 @@
                 box-shadow: 10px 0 0 $sac-accent, -10px 0 0 $sac-accent;
                 background-color: $sac-accent;
                 overflow-wrap: break-word;
+                color: $sac-background-1;
             }
         }
 
         > .stage-mode {
             background-color: $sac-background-2;
             font-weight: 300;
-            font-size: 32px;
+            font-size: 28px;
             height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         > .stage-name {
             flex-grow: 1;
             background-color: $sac-background-3;
             font-weight: 600;
-            font-size: 40px;
+            font-size: 36px;
             line-height: 45px;
             padding: 0 10px;
 

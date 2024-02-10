@@ -1,12 +1,14 @@
 $pageWidth: 1920px;
 $pageHeight: 1080px;
 
-$sac-background-1: #011310;
-$sac-background-2: #022720;
-$sac-background-3: #033329;
+$sac-background-1: #1B1E29;
+$sac-background-2: #1D202C;
+$sac-background-3: #232735;
 
-$sac-accent: #D61CDA;
+$sac-accent: #7BFDA6;
+$nw-gradient: linear-gradient(0deg, #FBDF69 -20%, $sac-accent 100%);
 
 $text-color: #E8f7FF;
+$text-color-dark: $sac-background-1;
 
 $global-drop-shadow: drop-shadow(0 0 5px rgba(40, 40, 40, 0.55)) drop-shadow(0 0 15px rgba(40, 40, 40, 0.3));
