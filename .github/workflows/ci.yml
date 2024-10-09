@@ -71,7 +71,7 @@ jobs:
         continue-on-error: true
         working-directory: ./sac-overlays
         run: |
-          git add -f graphics
+          git add -f graphics dashboard
           git commit -m "Build result from master branch" -a
 
       - name: Push built files to "build" branch

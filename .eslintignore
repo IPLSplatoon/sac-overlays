@@ -2,7 +2,6 @@
 .eslintrc.*.js
 webpack.config.ts
 dashboard/**/*
-extension/**/*
 graphics/**/*
 node_modules/**/*
 schemas/**/*
