@@ -23,6 +23,10 @@
         position: relative;
     }
 
+    .caster-visual-wrapper {
+        display: contents;
+    }
+
     .caster-nametag {
         display: flex;
         flex-direction: column;
