@@ -1,0 +1,1 @@
+(()=>{const e=document.getElementById("break-casters-checkbox"),c=nodecg.Replicant("breakCastersVisible",{defaultValue:!1});e.addEventListener("change",(e=>{c.value=e.target.checked})),c.on("change",(c=>{e.checked=c}))})();
