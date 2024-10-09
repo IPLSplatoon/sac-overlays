@@ -21,7 +21,11 @@ NodeCG.waitForReplicants(breakCastersVisible, activeBreakScene).then(() => {
     });
 });
 
-function onSceneSwitch(newActiveBreakScene: ActiveBreakScene, oldActiveBreakScene: ActiveBreakScene, breakCastersVisible: boolean | null) {
+function onSceneSwitch(
+    newActiveBreakScene: ActiveBreakScene,
+    oldActiveBreakScene: ActiveBreakScene,
+    breakCastersVisible: boolean | null
+) {
     sceneSwitchTl.addLabel('sceneHide');
 
     if (breakCastersVisible === false) {

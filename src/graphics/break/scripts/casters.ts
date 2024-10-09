@@ -27,8 +27,8 @@ casters.on('change', (newValue, oldValue) => {
 
     const newCasterIds = Object.keys(newValue);
     const oldCasterIds = oldValue == null ? null : Object.keys(oldValue);
-    const shouldRecreateCasterElements =
-        oldCasterIds == null
+    const shouldRecreateCasterElements
+        = oldCasterIds == null
         || newCasterIds.length !== oldCasterIds.length
         || newCasterIds.some((elem, i) => oldCasterIds[i] !== elem);
 
@@ -61,7 +61,10 @@ casters.on('change', (newValue, oldValue) => {
             (casterElem.querySelector('.caster-name') as FittedText).text = caster.name;
             (casterElem.querySelector('.caster-twitter') as FittedText).text = caster.twitter;
 
-            if (caster.videoUrl !== oldCaster.videoUrl || (isBlank(caster.videoUrl) && caster.imageUrl !== oldCaster.imageUrl)) {
+            if (
+                caster.videoUrl !== oldCaster.videoUrl
+                || (isBlank(caster.videoUrl) && caster.imageUrl !== oldCaster.imageUrl)
+            ) {
                 casterElem.querySelector('.caster-visual-wrapper').innerHTML = getCasterVisual(caster);
             }
         });
