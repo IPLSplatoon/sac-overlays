@@ -12,3 +12,4 @@ export const nextRoundTime = nodecg.Replicant<NextRoundStartTime>('nextRoundStar
 export const scoreboardData = nodecg.Replicant<ScoreboardData>('scoreboardData', DASHBOARD_BUNDLE_NAME);
 export const nextRound = nodecg.Replicant<NextRound>('nextRound', DASHBOARD_BUNDLE_NAME);
 export const assetPaths = nodecg.Replicant<AssetPaths>('assetPaths', DASHBOARD_BUNDLE_NAME);
+export const breakCastersVisible = nodecg.Replicant<boolean>('breakCastersVisible', { defaultValue: false });
