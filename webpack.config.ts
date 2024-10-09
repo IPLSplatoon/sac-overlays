@@ -10,9 +10,9 @@ import CopyPlugin from 'copy-webpack-plugin';
 
 const isProd = process.env.NODE_ENV === 'production';
 
-function graphicsConfig(): webpack.Configuration {
+function browserConfig(type: 'graphics' | 'dashboard'): webpack.Configuration {
     const entries: { [key: string]: string } = globby
-        .sync(['*/main.js', '*/main.ts'], { cwd: 'src/graphics' })
+        .sync(['*/main.js', '*/main.ts'], { cwd: `src/${type}` })
         .reduce((prev, curr) => {
             prev[path.basename(path.dirname(curr))] = `./${curr}`;
             return prev;
@@ -31,14 +31,17 @@ function graphicsConfig(): webpack.Configuration {
                             title: entryName,
                             template: `./${entryName}/${entryName}.html`
                         })
-                ),
-            new CopyPlugin({
-                patterns: [
-                    { from: 'assets/**/*' }
-                ]
-            }),
+                )
         ]
     );
+
+    if (type === 'graphics') {
+        plugins.push(new CopyPlugin({
+            patterns: [
+                { from: 'assets/**/*' }
+            ]
+        }));
+    }
 
     if (!isProd) {
         plugins.push(
@@ -50,12 +53,12 @@ function graphicsConfig(): webpack.Configuration {
     }
 
     return {
-        context: path.resolve(__dirname, 'src/graphics'),
+        context: path.resolve(__dirname, `src/${type}`),
         mode: isProd ? 'production' : 'development',
         target: 'web',
         entry: entries,
         output: {
-            path: path.resolve(__dirname, 'graphics'),
+            path: path.resolve(__dirname, type),
             filename: 'js/[name].js'
         },
         resolve: {
@@ -115,5 +118,6 @@ function graphicsConfig(): webpack.Configuration {
 }
 
 export default [
-    graphicsConfig()
+    browserConfig('graphics'),
+    browserConfig('dashboard')
 ];

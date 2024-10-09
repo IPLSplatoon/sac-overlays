@@ -1,4 +1,5 @@
-import { activeBreakScene } from '../../helpers/replicants';
+import { ActiveBreakScene } from 'schemas';
+import { activeBreakScene, breakCastersVisible } from '../../helpers/replicants';
 import gsap from 'gsap';
 
 export const sceneSwitchTl = gsap.timeline({
@@ -8,21 +9,42 @@ export const sceneSwitchTl = gsap.timeline({
     }
 });
 
-activeBreakScene.on('change', (newValue, oldValue) => {
+NodeCG.waitForReplicants(breakCastersVisible, activeBreakScene).then(() => {
+    breakCastersVisible.on('change', (newValue, oldValue) => {
+        if (oldValue == null && !newValue) return;
+        onSceneSwitch(activeBreakScene.value, activeBreakScene.value, newValue);
+    });
+
+    activeBreakScene.on('change', (newValue, oldValue) => {
+        if (breakCastersVisible.value) return;
+        onSceneSwitch(newValue, oldValue, null);
+    });
+});
+
+function onSceneSwitch(
+    newActiveBreakScene: ActiveBreakScene,
+    oldActiveBreakScene: ActiveBreakScene,
+    breakCastersVisible: boolean | null
+) {
     sceneSwitchTl.addLabel('sceneHide');
 
-    switch (oldValue) {
-        case 'main':
-            sceneSwitchTl.add(hideMainScene(), 'sceneHide');
-            break;
-        case 'teams':
-            sceneSwitchTl.add(hideTeams(), 'sceneHide');
-            break;
-        case 'stages':
-            sceneSwitchTl.add(hideStages(), 'sceneHide');
+    if (breakCastersVisible === false) {
+        sceneSwitchTl.add(hideCasters(), 'sceneHide');
+    } else {
+        switch (oldActiveBreakScene) {
+            case 'main':
+                sceneSwitchTl.add(hideMainScene(), 'sceneHide');
+                break;
+            case 'teams':
+                sceneSwitchTl.add(hideTeams(), 'sceneHide');
+                break;
+            case 'stages':
+                sceneSwitchTl.add(hideStages(), 'sceneHide');
+        }
+
     }
 
-    if (newValue === 'main') {
+    if (newActiveBreakScene === 'main' && breakCastersVisible !== true) {
         sceneSwitchTl.add(hideInfoBar(), 'sceneHide');
         sceneSwitchTl.addLabel('sceneShow');
     } else {
@@ -30,17 +52,21 @@ activeBreakScene.on('change', (newValue, oldValue) => {
         sceneSwitchTl.add(showInfoBar(), 'sceneShow');
     }
 
-    switch (newValue) {
-        case 'main':
-            sceneSwitchTl.add(showMainScene(), 'sceneShow');
-            break;
-        case 'teams':
-            sceneSwitchTl.add(showTeams(), 'sceneShow');
-            break;
-        case 'stages':
-            sceneSwitchTl.add(showStages(), 'sceneShow');
+    if (breakCastersVisible) {
+        sceneSwitchTl.add(showCasters(), 'sceneShow');
+    } else {
+        switch (newActiveBreakScene) {
+            case 'main':
+                sceneSwitchTl.add(showMainScene(), 'sceneShow');
+                break;
+            case 'teams':
+                sceneSwitchTl.add(showTeams(), 'sceneShow');
+                break;
+            case 'stages':
+                sceneSwitchTl.add(showStages(), 'sceneShow');
+        }
     }
-});
+}
 
 function hideMainScene(): gsap.core.Timeline {
     const tl = gsap.timeline({
@@ -223,6 +249,31 @@ function hideStages(): gsap.core.Timeline {
             ease: 'power2.in',
             stagger: 0.1
         });
+
+    return tl;
+}
+
+function showCasters(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onStart: () => {
+            gsap.set('.caster-wrapper', { opacity: 0 });
+            gsap.set('.casters-wrapper', { display: 'flex' });
+        }
+    });
+
+    tl.to('.caster-wrapper', { opacity: 1, duration: 0.5, stagger: 0.1 });
+
+    return tl;
+}
+
+function hideCasters(): gsap.core.Timeline {
+    const tl = gsap.timeline({
+        onComplete: () => {
+            gsap.set('.casters-wrapper', { display: 'none' });
+        }
+    });
+
+    tl.to('.caster-wrapper', { opacity: 0, duration: 0.5, stagger: 0.1 });
 
     return tl;
 }
